@@ -24,7 +24,7 @@
 ## 📂 프로젝트 구조
 
 
-<img width="1114" height="1304" alt="image" src="https://github.com/user-attachments/assets/3c35cab0-b5d2-44d8-a931-0d3cef94d1ea" />
+<img width="500" height="500" alt="image" src="https://github.com/user-attachments/assets/3c35cab0-b5d2-44d8-a931-0d3cef94d1ea" />
 
 
 ---
@@ -40,4 +40,5 @@
 👤 작성자<br>
 현민 (HyeonMin)<br>
 RPA Developer / Process Automation Engineer
+
 
