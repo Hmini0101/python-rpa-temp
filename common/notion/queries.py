@@ -3,11 +3,11 @@ from common.notion.client import NotionClient
 from config.settings import NOTION_DATABASE_ID
 
 
-class NotionQueryService:
+class NotionQueries:
 
-    def __init__(self):
+    def __init__(self, database_id=None):
         self.client = NotionClient()
-        self.database_id = NOTION_DATABASE_ID
+        self.database_id = database_id or NOTION_DATABASE_ID
 
     def fetch_all(self):
         """DB 전체 조회"""

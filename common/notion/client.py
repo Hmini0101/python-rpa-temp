@@ -24,3 +24,7 @@ class NotionClient:
         response = requests.patch(url, headers=self.headers, json=payload)
         response.raise_for_status()
         return response.json()
+
+    def create_page(self, payload: dict):
+        # 새 page(row) 생성
+        return self.post("/pages", payload)
