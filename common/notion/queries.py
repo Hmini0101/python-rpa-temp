@@ -1,11 +1,20 @@
 ## NOTION DB 조회
-from config.settings import BASE_URL, DATABASE_ID
-from notion.client import post
+from common.notion.client import NotionClient
+from config.settings import NOTION_DATABASE_ID
 
 
-def get_requested_tasks():
-    url = f"{BASE_URL}/database/{DATABASE_ID}/query"
-    body = {"filter": {"property": "Status", "select": {"equals": "요청"}}}
+class NotionQueryService:
 
-    res = post(url, body)
-    return res.json()["results"]
+    def __init__(self):
+        self.client = NotionClient()
+        self.database_id = NOTION_DATABASE_ID
+
+    def fetch_all(self):
+        """DB 전체 조회"""
+        payload = {}
+        return self.client.post(f"/databases/{self.database_id}/query", payload)
+
+    def fetch_by_date(self, date_str: str):
+        """특정 날짜 데이터 조회"""
+        payload = {"filter": {"property": "날짜", "date": {"equals": date_str}}}
+        return self.client.post(f"/databases/{self.database_id}/query", payload)

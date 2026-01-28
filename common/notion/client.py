@@ -1,18 +1,26 @@
 ## NOTION API 클라이언트
 
 import requests
-from config.settings import NOTION_TOKEN, NOTION_VERSION
-
-HEADERS = {
-    "Authoriztion": f"Bearer {NOTION_TOKEN}",
-    "Content-Type": "application/json",
-    "Notion-Version": NOTION_VERSION,
-}
+from config.settings import NOTION_BASE_URL, NOTION_API_KEY, NOTION_VERSION
 
 
-def post(url, body):
-    return requests.post(url, headers=HEADERS, json=body)
+class NotionClient:
+    def __init__(self):
+        self.base_url = NOTION_BASE_URL
+        self.headers = {
+            "Authorization": f"Bearer {NOTION_API_KEY}",
+            "Notion-Version": NOTION_VERSION,
+            "Content-Type": "application/json",
+        }
 
+    def post(self, endpoint: str, payload: dict):
+        url = f"{self.base_url}{endpoint}"
+        response = requests.post(url, headers=self.headers, json=payload)
+        response.raise_for_status()
+        return response.json()
 
-def patch(url, body):
-    return requests.patch(url, headers=HEADERS, json=body)
+    def patch(self, endpoint: str, payload: dict):
+        url = f"{self.base_url}{endpoint}"
+        response = requests.patch(url, headers=self.headers, json=payload)
+        response.raise_for_status()
+        return response.json()

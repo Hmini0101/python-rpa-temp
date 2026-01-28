@@ -3,8 +3,13 @@ from dotenv import load_dotenv
 
 load_dotenv()
 
-NOTION_TOKEN = os.getenv("NOTION_TOKEN")
-DATABASE_ID = os.getenv("DATABASE_ID")
+# Notion
+NOTION_BASE_URL = os.getenv("NOTION_BASE_URL", "https://api.notion.com/v1")
+NOTION_API_KEY = os.getenv("NOTION_API_KEY")
+NOTION_VERSION = os.getenv("NOTION_VERSION", "2022-06-28")
+NOTION_DATABASE_ID = "Ddd"
+# Gmail
+GMAIL_SENDER = os.getenv("GMAIL_SENDER")
 
-NOTION_VERSION = "2022-06-28"
-BASE_URL = "https://api.notion.com/v1"
+# Runtime
+ENV = os.getenv("ENV", "local")
